@@ -1,5 +1,5 @@
-const project = require('./index');
-const argParse = require('subheaven-arg');
+import project from './index.js';
+import argParse from 'subheaven-arg';
 
 argParse.description("Cumprimenta alguém");
 argParse.positional("name", "Nome a ser cumprimentado", { required: true, default: "", sample: "SubHeaven" });
