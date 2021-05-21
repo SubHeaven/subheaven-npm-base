@@ -1,7 +1,7 @@
-import project from './index.js';
-import argParse from 'subheaven-arg';
+const project = require('./index.js');
+const argParse = require('subheaven-arg');
 
-argParse.description("Cumprimenta alguém");
+argParse.init("subheaven-npm-base", "Cumprimenta alguém");
 argParse.positional("name", "Nome a ser cumprimentado", { required: true, default: "", sample: "SubHeaven" });
 (async() => {
     if (argParse.validate()) {
