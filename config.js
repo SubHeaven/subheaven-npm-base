@@ -15,6 +15,7 @@ argParse.positional("name", "Node do pacote NPM sendo criado", { required: false
         const data = JSON.parse(text);
         data.name = params.name;
         delete data.bin['subheaven-npm-base'];
+        delete data.scripts['postinstall'];
         data.bin[params.name] = './cli.js';
         data.repository.url = `git+https://github.com/SubHeaven/${params.name}.git`;
         data.bugs.url = `https://github.com/SubHeaven/${params.name}/issues`;
@@ -22,5 +23,11 @@ argParse.positional("name", "Node do pacote NPM sendo criado", { required: false
         text = JSON.stringify(data, null, 4);
         fs.writeFileSync('package.json', text);
         console.log("configurações do projeto atualizados com sucesso!");
+        fs.unlink('config.js', (err) => {
+            if (err) {
+              console.error(err)
+              return
+            }
+        });
     }
 })();
